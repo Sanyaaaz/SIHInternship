@@ -1,0 +1,248 @@
+<div class="min-h-screen bg-background py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Welcome back, <%= user.name %>!</h1>
+            <p class="text-gray-600 mt-2">Track your applications and manage your profile</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <i data-lucide="calendar" class="h-6 w-6 text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-2xl font-bold text-gray-900"><%= stats.totalApplications %></h3>
+                                <p class="text-sm text-gray-600">Applications</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i data-lucide="clock" class="h-6 w-6 text-secondary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-2xl font-bold text-gray-900"><%= stats.pendingApplications %></h3>
+                                <p class="text-sm text-gray-600">Pending</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-success"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-2xl font-bold text-gray-900"><%= stats.acceptedApplications %></h3>
+                                <p class="text-sm text-gray-600">Accepted</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applied Internships -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-xl font-semibold text-gray-900">Your Applications</h2>
+                            <a
+                                href="/internships"
+                                class="text-primary hover:text-primary/80 text-sm font-medium"
+                            >
+                                Browse More
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <% if (applications && applications.length > 0) { %>
+                            <div class="space-y-4">
+                                <% applications.forEach(application => { %>
+                                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                                        <div class="flex items-start justify-between">
+                                            <div class="flex items-start space-x-3">
+                                                <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                                                    <i data-lucide="building" class="h-6 w-6 text-gray-600"></i>
+                                                </div>
+                                                <div>
+                                                    <h3 class="font-semibold text-gray-900"><%= application.internship.title %></h3>
+                                                    <p class="text-gray-600"><%= application.internship.company %></p>
+                                                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                                                        <div class="flex items-center space-x-1">
+                                                            <i data-lucide="map-pin" class="h-4 w-4"></i>
+                                                            <span><%= application.internship.location %></span>
+                                                        </div>
+                                                        <div class="flex items-center space-x-1">
+                                                            <i data-lucide="dollar-sign" class="h-4 w-4"></i>
+                                                            <span><%= application.internship.stipend %></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full
+                                                    <%= application.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                                                        application.status === 'accepted' ? 'bg-green-100 text-green-800' :
+                                                        application.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                                                        'bg-blue-100 text-blue-800' %>">
+                                                    <%= application.status.charAt(0).toUpperCase() + application.status.slice(1) %>
+                                                </span>
+                                                <p class="text-xs text-gray-500 mt-1">
+                                                    Applied <%= new Date(application.createdAt).toLocaleDateString() %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4 flex items-center justify-between">
+                                            <p class="text-sm text-gray-600">
+                                                Deadline: <%= new Date(application.internship.applicationDeadline).toLocaleDateString() %>
+                                            </p>
+                                            <a
+                                                href="/internships/<%= application.internship._id %>"
+                                                class="flex items-center space-x-1 text-primary hover:text-primary/80 text-sm font-medium"
+                                            >
+                                                <span>View Details</span>
+                                                <i data-lucide="external-link" class="h-4 w-4"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        <% } else { %>
+                            <div class="text-center py-8">
+                                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="calendar" class="h-8 w-8 text-gray-400"></i>
+                                </div>
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">No applications yet</h3>
+                                <p class="text-gray-600 mb-4">Start applying to internships to see them here</p>
+                                <a
+                                    href="/internships"
+                                    class="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                                >
+                                    Browse Internships
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+
+                <!-- Recent Feedback -->
+                <% if (feedback && feedback.length > 0) { %>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="p-6 border-b border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-900">Recent Feedback</h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <% feedback.forEach(item => { %>
+                                <div class="border-l-4 border-primary pl-4 py-2">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-medium text-gray-900"><%= item.subject %></h4>
+                                        <span class="text-xs text-gray-500">
+                                            <%= new Date(item.createdAt).toLocaleDateString() %>
+                                        </span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-2"><%= item.note %></p>
+                                    <p class="text-xs text-gray-500">
+                                        From: <%= item.faculty.name %>
+                                    </p>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Profile Card -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Your Profile</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="user" class="h-5 w-5 text-gray-400"></i>
+                            <div>
+                                <p class="text-sm text-gray-500">Name</p>
+                                <p class="font-medium text-gray-900"><%= user.name %></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-gray-400"></i>
+                            <div>
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-medium text-gray-900"><%= user.email %></p>
+                            </div>
+                        </div>
+                        
+                        <% if (user.profile && user.profile.university) { %>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="graduation-cap" class="h-5 w-5 text-gray-400"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">University</p>
+                                    <p class="font-medium text-gray-900"><%= user.profile.university %></p>
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                        <% if (user.profile && user.profile.phone) { %>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="phone" class="h-5 w-5 text-gray-400"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500">Phone</p>
+                                    <p class="font-medium text-gray-900"><%= user.profile.phone %></p>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                    
+                    <a href="/dashboard/profile" class="mt-4 w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-center block">
+                        Edit Profile
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <a
+                            href="/internships"
+                            class="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                        >
+                            Browse New Internships
+                        </a>
+                        <a
+                            href="/dashboard/profile"
+                            class="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                        >
+                            Update Profile
+                        </a>
+                        <button class="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                            Download Resume
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tips -->
+                <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-200 p-6">
+                    <h3 class="text-lg font-semibold text-indigo-900 mb-3">💡 Pro Tips</h3>
+                    <ul class="text-sm text-indigo-800 space-y-2">
+                        <li>• Complete your profile for better matches</li>
+                        <li>• Apply early to increase your chances</li>
+                        <li>• Customize your application for each role</li>
+                        <li>• Follow up on your applications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

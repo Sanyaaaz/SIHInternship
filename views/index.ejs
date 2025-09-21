@@ -1,0 +1,175 @@
+<div class="min-h-screen bg-background">
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-br from-indigo-50 via-white to-orange-50 py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                Find Your Perfect
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                    Internship
+                </span>
+            </h1>
+            
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Discover amazing internship opportunities from top companies. Launch your career with hands-on experience and real-world projects.
+            </p>
+
+            <!-- Search Form -->
+            <form action="/internships" method="GET" class="max-w-3xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-2xl shadow-lg border border-gray-200">
+                    <div class="flex-1 relative">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5"></i>
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Job title, company, or keyword"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-gray-900 placeholder-gray-500"
+                        />
+                    </div>
+                    
+                    <div class="flex-1 relative">
+                        <i data-lucide="map-pin" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5"></i>
+                        <input
+                            type="text"
+                            name="location"
+                            placeholder="City, state, or remote"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-gray-900 placeholder-gray-500"
+                        />
+                    </div>
+                    
+                    <button
+                        type="submit"
+                        class="px-8 py-3 bg-gradient-to-r from-primary to-indigo-700 text-white font-medium rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition-all transform hover:scale-105 shadow-md hover:shadow-lg"
+                    >
+                        <span class="flex items-center space-x-2">
+                            <i data-lucide="search" class="h-5 w-5"></i>
+                            <span>Search</span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Stats -->
+            <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mx-auto mb-3">
+                        <i data-lucide="briefcase" class="h-6 w-6 text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">500+</h3>
+                    <p class="text-gray-600">Active Internships</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mx-auto mb-3">
+                        <i data-lucide="map-pin" class="h-6 w-6 text-secondary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">50+</h3>
+                    <p class="text-gray-600">Cities Covered</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mx-auto mb-3">
+                        <i data-lucide="users" class="h-6 w-6 text-success"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">10k+</h3>
+                    <p class="text-gray-600">Students Placed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose InternshipHub?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    We make finding and applying for internships simple, secure, and successful.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-100">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="star" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Curated Opportunities</h3>
+                    <p class="text-gray-600">
+                        Hand-picked internships from top companies ensuring quality and relevance for your career goals.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-gradient-to-br from-orange-50 to-red-50 border border-orange-100">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="trending-up" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Career Growth</h3>
+                    <p class="text-gray-600">
+                        Build valuable skills and experience that will accelerate your professional development.
+                    </p>
+                </div>
+                
+                <div class="text-center p-6 rounded-lg bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100">
+                    <div class="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="shield" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Secure Platform</h3>
+                    <p class="text-gray-600">
+                        Safe and reliable application process with privacy protection and secure data handling.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Internships -->
+    <% if (featuredInternships && featuredInternships.length > 0) { %>
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900">Featured Internships</h2>
+                    <p class="text-gray-600 mt-2">Discover top opportunities from leading companies</p>
+                </div>
+                <a
+                    href="/internships"
+                    class="flex items-center space-x-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                    <span>View All</span>
+                    <i data-lucide="arrow-right" class="h-5 w-5"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <% featuredInternships.forEach(internship => { %>
+                    <%- include('partials/internship-card', { internship: internship }) %>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-purple-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h2>
+            <p class="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+                Join thousands of students who have found their perfect internships through our platform.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                    href="/auth/signup"
+                    class="px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                    Create Account
+                </a>
+                <a
+                    href="/internships"
+                    class="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors"
+                >
+                    Browse Internships
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
